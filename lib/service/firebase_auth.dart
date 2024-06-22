@@ -1,4 +1,3 @@
-
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase_pegion_post/model/user_model.dart';
 import 'package:flutter_firebase_pegion_post/view/all_users_screen.dart';
 import 'package:flutter_firebase_pegion_post/view/startup_screens/login_screen.dart';
+import 'package:flutter_firebase_pegion_post/view/widgets/bottom_nav_widget.dart';
 
 class FirebaseAuthentication {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -41,7 +41,7 @@ class FirebaseAuthentication {
             .set(userModel.toJson());
         log('Sucess');
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const AllUsersScreen(),
+          builder: (context) => const BottomNavWidget(),
         ));
         return user;
       }
@@ -75,7 +75,7 @@ class FirebaseAuthentication {
         log('email not Verified');
       }
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const AllUsersScreen(),
+        builder: (context) => const BottomNavWidget(),
       ));
     } on FirebaseAuthException catch (e) {
       log('$e');

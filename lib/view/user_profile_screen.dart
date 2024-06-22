@@ -38,8 +38,11 @@ class UserProfileScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 30),
-                    const CircleAvatar(
-                      radius: 60,
+                    InkWell(
+                      onTap: () {},
+                      child: const CircleAvatar(
+                        radius: 60,
+                      ),
                     ),
                     const SizedBox(height: 10),
                     Text(
