@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyA2WByh7Kc-59ZjL3to3wAQFCdXd4zai8E',
-    appId: '1:16824072976:android:813648d5eca17480134395',
+    appId: '1:16824072976:android:1de764319d654a5d134395',
     messagingSenderId: '16824072976',
     projectId: 'socialmedia-cb33a',
     storageBucket: 'socialmedia-cb33a.appspot.com',
@@ -73,4 +73,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'socialmedia-cb33a.appspot.com',
     measurementId: 'G-NNNGJ2MVW0',
   );
+
 }

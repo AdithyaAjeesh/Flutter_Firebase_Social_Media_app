@@ -1,4 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
 
 import 'dart:developer';
 
@@ -59,6 +58,7 @@ class FirebaseAuthentication {
         },
       );
     }
+    return null;
   }
 
   Future<User?> loginAuth(
@@ -80,14 +80,15 @@ class FirebaseAuthentication {
     } on FirebaseAuthException catch (e) {
       log('$e');
     }
+    return null;
   }
 
   Future<void> logoutAuth(BuildContext context) async {
     try {
-      await firebaseAuth.signOut();
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => const LoginScreen(),
       ));
+      await firebaseAuth.signOut();
       log('Logged Out');
     } on FirebaseAuthException catch (e) {
       log('$e');

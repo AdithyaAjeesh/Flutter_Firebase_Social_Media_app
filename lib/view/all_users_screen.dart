@@ -17,6 +17,7 @@ class AllUsersScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('All Users'),
+        automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(255, 213, 156, 156),
         actions: [
           IconButton(
@@ -49,16 +50,20 @@ class AllUsersScreen extends StatelessWidget {
                   final email = data.email.toString();
                   final followers = data.followers;
                   final following = data.following;
+                  final userID = data.uid.toString();
                   return InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => UserProfileScreen(
-                          name: name,
-                          email: email,
-                          followers: followers!,
-                          following: following!,
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => UserProfileScreen(
+                            name: name,
+                            email: email,
+                            followers: followers!,
+                            following: following!,
+                            userID: userID,
+                          ),
                         ),
-                      ));
+                      );
                     },
                     child: Container(
                       height: 70,
@@ -81,7 +86,6 @@ class AllUsersScreen extends StatelessWidget {
                               fontSize: 18,
                             ),
                           ),
-                          Text(data.uid.toString()),
                         ],
                       ),
                     ),

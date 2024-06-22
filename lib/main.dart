@@ -1,9 +1,9 @@
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_pegion_post/controller/firebase_controller.dart';
 import 'package:flutter_firebase_pegion_post/controller/user_controller.dart';
 import 'package:flutter_firebase_pegion_post/firebase_options.dart';
-import 'package:flutter_firebase_pegion_post/view/all_users_screen.dart';
 import 'package:flutter_firebase_pegion_post/view/startup_screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
