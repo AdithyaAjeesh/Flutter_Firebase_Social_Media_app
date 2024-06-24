@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_pegion_post/controller/firebase_controller.dart';
 import 'package:flutter_firebase_pegion_post/controller/user_controller.dart';
 import 'package:flutter_firebase_pegion_post/model/user_model.dart';
+import 'package:flutter_firebase_pegion_post/view/current_user_details.dart';
 import 'package:flutter_firebase_pegion_post/view/user_profile_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +12,7 @@ class AllUsersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<UserController>(context);
-    final authPro = Provider.of<FirebaseController>(context);
+    // final authPro = Provider.of<FirebaseController>(context);
     String currentUserID = FirebaseAuth.instance.currentUser!.uid;
     return Scaffold(
       appBar: AppBar(
@@ -22,11 +22,13 @@ class AllUsersScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              authPro.logoutFunction(context);
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const CurrentUserDetails(),
+                ),
+              );
             },
-            icon: const Icon(
-              Icons.login,
-            ),
+            icon: const Icon(Icons.person),
           ),
         ],
       ),
@@ -51,6 +53,7 @@ class AllUsersScreen extends StatelessWidget {
                   final followers = data.followers;
                   final following = data.following;
                   final userID = data.uid.toString();
+                  final image = data.image.toString();
                   return InkWell(
                     onTap: () {
                       Navigator.of(context).push(
@@ -61,6 +64,7 @@ class AllUsersScreen extends StatelessWidget {
                             followers: followers!,
                             following: following!,
                             userID: userID,
+                            image: data.image.toString(),
                           ),
                         ),
                       );
@@ -77,8 +81,15 @@ class AllUsersScreen extends StatelessWidget {
                       child: Row(
                         children: [
                           const SizedBox(width: 20),
-                          const Icon(Icons.person),
-                          const SizedBox(width: 10),
+                          Container(
+                            child: image.isEmpty
+                                ? const Icon(Icons.person)
+                                : CircleAvatar(
+                                    backgroundImage: NetworkImage(image),
+                                    radius: 28,
+                                  ),
+                          ),
+                          const SizedBox(width: 15),
                           Text(
                             name,
                             style: const TextStyle(

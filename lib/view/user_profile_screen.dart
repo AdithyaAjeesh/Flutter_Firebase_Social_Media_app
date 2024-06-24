@@ -8,15 +8,17 @@ class UserProfileScreen extends StatelessWidget {
   final int followers;
   final int following;
   final String userID;
+  final String image;
 
   const UserProfileScreen({
-    super.key,
+    Key? key,
     required this.name,
     required this.email,
     required this.followers,
     required this.following,
     required this.userID,
-  });
+    required this.image,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +29,16 @@ class UserProfileScreen extends StatelessWidget {
       ),
       body: Center(
         child: FutureBuilder<bool>(
-            future: provider.checkIsFollowing(userID.toString()),
-            builder: (context, snapshot) {
-              bool isFollowig = snapshot.data!;
+          future: provider.checkIsFollowing(userID),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const CircularProgressIndicator();
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else if (!snapshot.hasData) {
+              return const Text('No data found');
+            } else {
+              bool isFollowing = snapshot.data!;
               return Container(
                 height: 400,
                 width: 300,
@@ -38,11 +47,11 @@ class UserProfileScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 30),
-                    InkWell(
-                      onTap: () {},
-                      child: const CircleAvatar(
-                        radius: 60,
-                      ),
+                    CircleAvatar(
+                      backgroundImage:
+                          image.isNotEmpty ? NetworkImage(image) : null,
+                      radius: 60,
+                      child: image.isEmpty ? const Icon(Icons.person) : null,
                     ),
                     const SizedBox(height: 10),
                     Text(
@@ -61,14 +70,20 @@ class UserProfileScreen extends StatelessWidget {
                     const SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: () {
-                        provider.followFunction(userID);
+                        if (isFollowing) {
+                          provider.unFollowFunction(userID);
+                        } else {
+                          provider.followFunction(userID);
+                        }
                       },
-                      child: const Text('Follow'),
+                      child: Text(isFollowing ? 'Unfollow' : 'Follow'),
                     ),
                   ],
                 ),
               );
-            }),
+            }
+          },
+        ),
       ),
     );
   }

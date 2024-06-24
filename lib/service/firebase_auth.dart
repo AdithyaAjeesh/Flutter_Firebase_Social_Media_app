@@ -1,11 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_pegion_post/model/user_model.dart';
-import 'package:flutter_firebase_pegion_post/view/all_users_screen.dart';
-import 'package:flutter_firebase_pegion_post/view/startup_screens/login_screen.dart';
+import 'package:flutter_firebase_pegion_post/view/splash_screen.dart';
 import 'package:flutter_firebase_pegion_post/view/widgets/bottom_nav_widget.dart';
 
 class FirebaseAuthentication {
@@ -86,7 +87,7 @@ class FirebaseAuthentication {
   Future<void> logoutAuth(BuildContext context) async {
     try {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const LoginScreen(),
+        builder: (context) => const SplashScreen(),
       ));
       await firebaseAuth.signOut();
       log('Logged Out');

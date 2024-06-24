@@ -15,4 +15,5 @@ class FunctionController extends ChangeNotifier {
     currentIndex = value;
     notifyListeners();
   }
+
 }
