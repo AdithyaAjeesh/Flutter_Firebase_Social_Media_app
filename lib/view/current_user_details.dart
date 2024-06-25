@@ -95,7 +95,7 @@ class CurrentUserDetails extends StatelessWidget {
             ),
             Expanded(
               child: StreamBuilder<List<PostModel>>(
-                stream: provider.getPostsForCurrentUser(),
+                stream: provider.getAllPosts(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());

@@ -88,17 +88,6 @@ class UserController extends ChangeNotifier {
     }
   }
 
-  Stream<List<PostModel>> getPostsForCurrentUser() {
-    return FirebaseFirestore.instance
-        .collection('posts')
-        .snapshots()
-        .map((snapshot) {
-      return snapshot.docs.map((doc) {
-        return PostModel.fromJson(doc.data());
-      }).toList();
-    });
-  }
-
   Stream<List<PostModel>> getAllPosts() {
     return _firestore.collection('posts').snapshots().map((snapshot) {
       return snapshot.docs.map((doc) {
