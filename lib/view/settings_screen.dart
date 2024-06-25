@@ -17,7 +17,7 @@ class SettingsScreen extends StatelessWidget {
           onPressed: () {
             provider.logoutFunction(context);
           },
-          child: Text('Logout'),
+          child: const Text('Logout'),
         ),
       ),
     );

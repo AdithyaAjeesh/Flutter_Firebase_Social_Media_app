@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -74,8 +73,6 @@ class FirebaseAuthentication {
       );
       if (firebaseAuth.currentUser!.emailVerified) {
         return credential.user;
-      } else {
-        log('email not Verified');
       }
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => const BottomNavWidget(),
