@@ -33,12 +33,11 @@ class CurrentUserDetails extends StatelessWidget {
                   );
                 } else {
                   final user = snapshot.data!;
-                  final name = user.userName ?? 'N/A';
-                  final email = user.email ?? 'N/A';
-                  final followers = user.followers?.toString() ?? '0';
-                  final following = user.following?.toString() ?? '0';
+                  final name = user.userName;
+                  final email = user.email;
+                  final followers = user.followers?.toString();
+                  final following = user.following?.toString();
                   final image = user.image ?? '';
-
                   return Container(
                     height: 400,
                     width: 300,
@@ -65,7 +64,7 @@ class CurrentUserDetails extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          name,
+                          name.toString(),
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -115,7 +114,7 @@ class CurrentUserDetails extends StatelessWidget {
                         PostModel post = posts[index];
                         return Container(
                           decoration: const BoxDecoration(
-                              color: Colors.redAccent,
+                              color: Color.fromARGB(255, 213, 156, 156),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
                           margin: const EdgeInsets.all(5),

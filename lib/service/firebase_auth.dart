@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_pegion_post/model/user_model.dart';
-import 'package:flutter_firebase_pegion_post/view/splash_screen.dart';
+import 'package:flutter_firebase_pegion_post/view/startup_screens/splash_screen.dart';
 import 'package:flutter_firebase_pegion_post/view/widgets/bottom_nav_widget.dart';
 
 class FirebaseAuthentication {
@@ -69,7 +69,9 @@ class FirebaseAuthentication {
   ) async {
     try {
       UserCredential credential = await firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
       if (firebaseAuth.currentUser!.emailVerified) {
         return credential.user;
       } else {
@@ -86,11 +88,11 @@ class FirebaseAuthentication {
 
   Future<void> logoutAuth(BuildContext context) async {
     try {
+      await firebaseAuth.signOut();
+      log('Logged Out');
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => const SplashScreen(),
       ));
-      await firebaseAuth.signOut();
-      log('Logged Out');
     } on FirebaseAuthException catch (e) {
       log('$e');
     }
