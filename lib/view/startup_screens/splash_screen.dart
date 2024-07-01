@@ -9,10 +9,16 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<FirebaseController>(context);
+    
     provider.checkLoggedInFunction(context);
     return const Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
-        child: Text('Splash Screen'),
+        child: Icon(
+          Icons.chat_bubble_outline,
+          color: Color.fromARGB(255, 213, 156, 156),
+          size: 80,
+        ),
       ),
     );
   }

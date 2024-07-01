@@ -15,10 +15,19 @@ class AllUsersScreen extends StatelessWidget {
     // final authPro = Provider.of<FirebaseController>(context);
     String currentUserID = FirebaseAuth.instance.currentUser!.uid;
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('All Users'),
+        title: const Text(
+          'All Users',
+          style: TextStyle(
+            color: Color.fromARGB(255, 213, 156, 156),
+          ),
+        ),
         automaticallyImplyLeading: false,
-        backgroundColor: const Color.fromARGB(255, 213, 156, 156),
+        backgroundColor: Colors.black,
+        iconTheme: const IconThemeData(
+          color: Color.fromARGB(255, 213, 156, 156),
+        ),
         actions: [
           IconButton(
             onPressed: () {

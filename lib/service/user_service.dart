@@ -52,7 +52,6 @@ class UserService {
 
   Future<void> unfollowUser(String unfollowUserId) async {
     String currentUserId = firebaseAuth.currentUser!.uid;
-
     await firestore
         .collection('followers')
         .doc(currentUserId)
@@ -85,7 +84,7 @@ class UserService {
             .collection('users')
             .doc(user.uid)
             .update({'image': imageUrl});
-      } on FirebaseAuthException catch (e) {
+      } on FirebaseException catch (e) {
         throw Exception(e);
       }
     } else {
@@ -116,7 +115,7 @@ class UserService {
       } else {
         log('Failed To Post User not Avalable');
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseException catch (e) {
       throw Exception(e);
     }
   }

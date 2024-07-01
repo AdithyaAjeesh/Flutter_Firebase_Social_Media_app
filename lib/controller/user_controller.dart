@@ -9,7 +9,7 @@ import 'package:flutter_firebase_pegion_post/service/user_service.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UserController extends ChangeNotifier {
-  UserService userService = UserService();
+  UserService userService = UserService(); 
   CollectionReference firestore =
       FirebaseFirestore.instance.collection("users");
   final FirebaseAuth _auth = FirebaseAuth.instance;

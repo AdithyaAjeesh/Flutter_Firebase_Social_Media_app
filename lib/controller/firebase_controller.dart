@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_pegion_post/controller/function_controller.dart';
 import 'package:flutter_firebase_pegion_post/controller/user_controller.dart';
 import 'package:flutter_firebase_pegion_post/service/firebase_auth.dart';
 import 'package:flutter_firebase_pegion_post/view/startup_screens/login_screen.dart';
@@ -17,7 +18,6 @@ class FirebaseController extends ChangeNotifier {
     String username = nameController.text;
     String password = passWordController.text;
     String email = emailController.text;
-
     firebaseAuthentication.signUpAuth(
       email,
       password,
@@ -30,12 +30,16 @@ class FirebaseController extends ChangeNotifier {
   Future<void> loginFunction(BuildContext context) async {
     String password = passWordController.text;
     String email = emailController.text;
+    FunctionController().getAllDataReady();
     firebaseAuthentication.loginAuth(email, password, context);
     notifyListeners();
   }
 
   Future<void> logoutFunction(BuildContext context) async {
     firebaseAuthentication.logoutAuth(context);
+    nameController.clear();
+    passWordController.clear();
+    emailController.clear();
     notifyListeners();
   }
 
