@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_pegion_post/controller/user_controller.dart';
 import 'package:flutter_firebase_pegion_post/view/widgets/auth_textfeild.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class PostScreen extends StatelessWidget {

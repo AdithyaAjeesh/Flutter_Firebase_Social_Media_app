@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase_pegion_post/model/user_model.dart';
 import 'package:flutter_firebase_pegion_post/view/startup_screens/splash_screen.dart';
 import 'package:flutter_firebase_pegion_post/view/widgets/bottom_nav_widget.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthentication {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -93,5 +94,100 @@ class FirebaseAuthentication {
     } on FirebaseAuthException catch (e) {
       log('$e');
     }
+  }
+
+  // Future<UserCredential?> signInWithGoogle(BuildContext context) async {
+  //   try {
+  //     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  //     if (googleUser == null) {
+  //       return null;
+  //     }
+  //     final GoogleSignInAuthentication googleAuth =
+  //         await googleUser.authentication;
+
+  //     final OAuthCredential credential = GoogleAuthProvider.credential(
+  //       accessToken: googleAuth.accessToken,
+  //       idToken: googleAuth.idToken,
+  //     );
+
+  //     UserCredential userCredential =
+  //         await firebaseAuth.signInWithCredential(credential);
+  //     User? user = userCredential.user;
+  //     if (user != null) {
+  //       DocumentReference userDoc = firestore.collection('users').doc(user.uid);
+  //       DocumentSnapshot docSnapshot = await userDoc.get();
+
+  //       if (!docSnapshot.exists) {
+  //         UserModel newUser = UserModel(
+  //           userName: googleUser.displayName,
+  //           email: user.email,
+  //           uid: user.uid,
+  //           image: "",
+  //           followers: 0,
+  //           following: 0,
+  //         );
+
+  //         await userDoc.set(newUser.toJson());
+  //       }
+  //     }
+
+  //     return userCredential;
+  //   } on FirebaseException catch (e) {
+  //     throw Exception(e);
+  //   }
+  // }
+  Future<UserCredential?> signInWithGoogle(BuildContext context) async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) {
+        return null;
+      }
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      UserCredential userCredential =
+          await firebaseAuth.signInWithCredential(credential);
+      User? user = userCredential.user;
+      if (user != null) {
+        DocumentReference userDoc = firestore.collection('users').doc(user.uid);
+        DocumentSnapshot docSnapshot = await userDoc.get();
+
+        if (!docSnapshot.exists) {
+          UserModel newUser = UserModel(
+            userName: googleUser.displayName ?? 'Anonymous',
+            email: user.email ?? '',
+            uid: user.uid,
+            image: "",
+            followers: 0,
+            following: 0,
+          );
+
+          await userDoc.set(newUser.toJson());
+        }
+      }
+
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => const BottomNavWidget(),
+      ));
+
+      return userCredential;
+    } on FirebaseException catch (e) {
+      log('$e');
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Error'),
+            content: Text('Failed to sign in with Google: ${e.message}'),
+          );
+        },
+      );
+    }
+    return null;
   }
 }

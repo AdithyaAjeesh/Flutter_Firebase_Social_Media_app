@@ -45,7 +45,7 @@ class CurrentUserDetails extends StatelessWidget {
                 } else {
                   final user = snapshot.data!;
                   final name = user.userName;
-                  final email = user.email;
+                  // final email = user.email;
                   final followers = user.followers?.toString();
                   final following = user.following?.toString();
                   final image = user.image ?? '';

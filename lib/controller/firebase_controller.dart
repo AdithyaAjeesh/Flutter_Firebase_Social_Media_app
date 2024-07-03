@@ -43,6 +43,10 @@ class FirebaseController extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> signUpWithGoogle(BuildContext context) async {
+    await firebaseAuthentication.signInWithGoogle(context);
+  }
+
   Future<void> checkLoggedInFunction(BuildContext context) async {
     UserController userController = UserController();
     final currentUser = await userController.getCurrentUser();
