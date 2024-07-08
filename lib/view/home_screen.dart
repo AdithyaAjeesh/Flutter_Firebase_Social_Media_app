@@ -16,10 +16,21 @@ class HomeScreen extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Scaffold(
+            backgroundColor: Colors.black,
             appBar: AppBar(
-              title: const Text('Loading...'),
+              backgroundColor: Colors.black,
+              title: const Text(
+                'Loading...',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 213, 156, 156),
+                ),
+              ),
             ),
-            body: const Center(child: CircularProgressIndicator()),
+            body: const Center(
+              child: CircularProgressIndicator(
+                color: Color.fromARGB(255, 213, 156, 156),
+              ),
+            ),
           );
         } else if (snapshot.hasError) {
           return Scaffold(

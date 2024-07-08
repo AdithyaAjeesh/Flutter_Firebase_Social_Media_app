@@ -3,7 +3,6 @@ import 'package:flutter_firebase_pegion_post/controller/firebase_controller.dart
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatelessWidget {
-  // ignore: use_key_in_widget_constructors
   const SplashScreen({Key? key});
 
   @override
