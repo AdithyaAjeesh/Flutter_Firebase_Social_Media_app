@@ -96,46 +96,6 @@ class FirebaseAuthentication {
     }
   }
 
-  // Future<UserCredential?> signInWithGoogle(BuildContext context) async {
-  //   try {
-  //     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-  //     if (googleUser == null) {
-  //       return null;
-  //     }
-  //     final GoogleSignInAuthentication googleAuth =
-  //         await googleUser.authentication;
-
-  //     final OAuthCredential credential = GoogleAuthProvider.credential(
-  //       accessToken: googleAuth.accessToken,
-  //       idToken: googleAuth.idToken,
-  //     );
-
-  //     UserCredential userCredential =
-  //         await firebaseAuth.signInWithCredential(credential);
-  //     User? user = userCredential.user;
-  //     if (user != null) {
-  //       DocumentReference userDoc = firestore.collection('users').doc(user.uid);
-  //       DocumentSnapshot docSnapshot = await userDoc.get();
-
-  //       if (!docSnapshot.exists) {
-  //         UserModel newUser = UserModel(
-  //           userName: googleUser.displayName,
-  //           email: user.email,
-  //           uid: user.uid,
-  //           image: "",
-  //           followers: 0,
-  //           following: 0,
-  //         );
-
-  //         await userDoc.set(newUser.toJson());
-  //       }
-  //     }
-
-  //     return userCredential;
-  //   } on FirebaseException catch (e) {
-  //     throw Exception(e);
-  //   }
-  // }
   Future<UserCredential?> signInWithGoogle(BuildContext context) async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -156,7 +116,6 @@ class FirebaseAuthentication {
       if (user != null) {
         DocumentReference userDoc = firestore.collection('users').doc(user.uid);
         DocumentSnapshot docSnapshot = await userDoc.get();
-
         if (!docSnapshot.exists) {
           UserModel newUser = UserModel(
             userName: googleUser.displayName ?? 'Anonymous',
@@ -166,7 +125,6 @@ class FirebaseAuthentication {
             followers: 0,
             following: 0,
           );
-
           await userDoc.set(newUser.toJson());
         }
       }

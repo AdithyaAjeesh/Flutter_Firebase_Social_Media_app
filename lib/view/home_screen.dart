@@ -51,6 +51,11 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: Colors.black,
             appBar: AppBar(
               backgroundColor: Colors.black,
+              leading: const Icon(
+                Icons.chat_bubble_outline,
+                size: 30,
+                color: Color.fromARGB(255, 213, 156, 156),
+              ),
               automaticallyImplyLeading: false,
             ),
             body: StreamBuilder<List<PostModel>>(

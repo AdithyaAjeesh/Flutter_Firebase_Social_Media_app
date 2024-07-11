@@ -8,7 +8,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<FirebaseController>(context);
-    
+
     provider.checkLoggedInFunction(context);
     return const Scaffold(
       backgroundColor: Colors.black,
