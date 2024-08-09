@@ -23,15 +23,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         return windows;
       case TargetPlatform.linux:
@@ -47,31 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyC1TsfY5BF4YnwoCWjtLI5Ef3XxRqo8YbY',
-    appId: '1:16824072976:web:a191afb9ad82e52d134395',
-    messagingSenderId: '16824072976',
-    projectId: 'socialmedia-cb33a',
-    authDomain: 'socialmedia-cb33a.firebaseapp.com',
-    storageBucket: 'socialmedia-cb33a.appspot.com',
-    measurementId: 'G-R8TJR1GY6X',
+    apiKey: 'AIzaSyAgzSrVQJTfUYLJLD_4t80Kq8KRpCzTpfM',
+    appId: '1:359856036297:web:22de0293378839e6e7f018',
+    messagingSenderId: '359856036297',
+    projectId: 'fir-auth-78db3',
+    authDomain: 'fir-auth-78db3.firebaseapp.com',
+    storageBucket: 'fir-auth-78db3.appspot.com',
+    measurementId: 'G-JQCQ173DP0',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA2WByh7Kc-59ZjL3to3wAQFCdXd4zai8E',
-    appId: '1:16824072976:android:1de764319d654a5d134395',
-    messagingSenderId: '16824072976',
-    projectId: 'socialmedia-cb33a',
-    storageBucket: 'socialmedia-cb33a.appspot.com',
+    apiKey: 'AIzaSyAzLEIw7dqItlHsXxEl81enBwKpIv05HOY',
+    appId: '1:359856036297:android:93ec202a6cc7e08ce7f018',
+    messagingSenderId: '359856036297',
+    projectId: 'fir-auth-78db3',
+    storageBucket: 'fir-auth-78db3.appspot.com',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyC1TsfY5BF4YnwoCWjtLI5Ef3XxRqo8YbY',
-    appId: '1:16824072976:web:70684617287bed37134395',
-    messagingSenderId: '16824072976',
-    projectId: 'socialmedia-cb33a',
-    authDomain: 'socialmedia-cb33a.firebaseapp.com',
-    storageBucket: 'socialmedia-cb33a.appspot.com',
-    measurementId: 'G-NNNGJ2MVW0',
+    apiKey: 'AIzaSyAgzSrVQJTfUYLJLD_4t80Kq8KRpCzTpfM',
+    appId: '1:359856036297:web:5b71c747681d3104e7f018',
+    messagingSenderId: '359856036297',
+    projectId: 'fir-auth-78db3',
+    authDomain: 'fir-auth-78db3.firebaseapp.com',
+    storageBucket: 'fir-auth-78db3.appspot.com',
+    measurementId: 'G-PRGRTZBE2C',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyArQF6_QSiw1nNJvfbde7SoDzeec4aFWJk',
+    appId: '1:359856036297:ios:bfdeaaf697e2d603e7f018',
+    messagingSenderId: '359856036297',
+    projectId: 'fir-auth-78db3',
+    storageBucket: 'fir-auth-78db3.appspot.com',
+    iosBundleId: 'com.example.flutterFirebasePegionPost',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyArQF6_QSiw1nNJvfbde7SoDzeec4aFWJk',
+    appId: '1:359856036297:ios:bfdeaaf697e2d603e7f018',
+    messagingSenderId: '359856036297',
+    projectId: 'fir-auth-78db3',
+    storageBucket: 'fir-auth-78db3.appspot.com',
+    iosBundleId: 'com.example.flutterFirebasePegionPost',
   );
 
 }

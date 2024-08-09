@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "16824072976",
-    "project_id": "socialmedia-cb33a",
-    "storage_bucket": "socialmedia-cb33a.appspot.com"
+    "project_number": "359856036297",
+    "project_id": "fir-auth-78db3",
+    "storage_bucket": "fir-auth-78db3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:16824072976:android:1de764319d654a5d134395",
+        "mobilesdk_app_id": "1:359856036297:android:93ec202a6cc7e08ce7f018",
         "android_client_info": {
           "package_name": "com.example.flutter_firebase_pegion_post"
         }
@@ -15,26 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA2WByh7Kc-59ZjL3to3wAQFCdXd4zai8E"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:16824072976:android:813648d5eca17480134395",
-        "android_client_info": {
-          "package_name": "com.socialmedia.app"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyA2WByh7Kc-59ZjL3to3wAQFCdXd4zai8E"
+          "current_key": "AIzaSyAzLEIw7dqItlHsXxEl81enBwKpIv05HOY"
         }
       ],
       "services": {
